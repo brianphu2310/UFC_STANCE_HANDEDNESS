@@ -1,3 +1,6 @@
+<img width="452" height="325" alt="image" src="https://github.com/user-attachments/assets/54f02a96-4b9f-469b-95f9-cd73afaea202" />
+<img width="452" height="364" alt="image" src="https://github.com/user-attachments/assets/dadef309-c476-4d43-b7a4-1e738e6b32ae" />
+
 # UFC_STANCE_HANDEDNESS_AND_MYSELF
 UFC Stance Hand Dominance And Myself Analysis - Junior Project
 📋 Overview
