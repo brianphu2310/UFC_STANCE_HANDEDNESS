@@ -20,10 +20,6 @@ So I decided to answer this question with a comprehensive data analysis project 
 
 This project combines statistical analysis, data visualization, and personal insights to answer the question: "Does my unorthodox stance give me an advantage in the octagon?"
 
-Live Dashboard
-
- Tableau Dashboard: [public.tableau.com/app/profile/brian.ma5935/viz/UFCSTANCEANDHANDEDNESS/Dashboard2](https://public.tableau.com/app/profile/brian.ma5935/viz/UFCSTANCEANDHANDEDNESS/Dashboard2)
-
 Key Features
 
 - Dual Analysis Approach: Combines general UFC statistics with personalized insights
