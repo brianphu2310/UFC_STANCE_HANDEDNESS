@@ -1,0 +1,225 @@
+psql (18.3 (Postgres.app))
+Type "help" for help.
+
+carrot=# DROP TABLE IF EXISTS fighters CASCADE;
+DROP TABLE
+carrot=# DROP TABLE IF EXISTS fighters_male CASCADE;
+NOTICE:  table "fighters_male" does not exist, skipping
+DROP TABLE
+carrot=# CREATE TABLE fighters_male (
+carrot(#     id SERIAL PRIMARY KEY,
+carrot(#     fighter_name VARCHAR(100) NOT NULL,
+carrot(#     country VARCHAR(50),
+carrot(#     continent VARCHAR(50),
+carrot(#     stance VARCHAR(20) CHECK (stance IN ('Orthodox', 'Southpaw')),
+carrot(#     handedness VARCHAR(20) CHECK (handedness IN ('Right-handed', 'Left-handed')),
+carrot(#     weight_class VARCHAR(50),
+carrot(#     wins INTEGER,
+carrot(#     losses INTEGER,
+carrot(#     total_fights INTEGER,
+carrot(#     win_rate DECIMAL(5,2),
+carrot(#     learning_tip TEXT
+carrot(# );
+CREATE TABLE
+carrot=# INSERT INTO fighters_male (fighter_name, country, continent, stance, handedness, weight_class, wins, losses, total_fights, win_rate, learning_tip) VALUES
+carrot-# ('Conor McGregor', 'Ireland', 'Europe', 'Southpaw', 'Right-handed', 'Lightweight', 22, 6, 28, 78.57, 'Study his left cross, footwork, distance management, and mental game'),
+carrot-# ('Dustin Poirier', 'USA', 'North America', 'Southpaw', 'Right-handed', 'Lightweight', 29, 8, 37, 78.38, 'Study his boxing combinations, body punching, and pressure fighting'),
+carrot-# ('Sean O''Malley', 'USA', 'North America', 'Southpaw', 'Right-handed', 'Bantamweight', 17, 1, 18, 94.44, 'Study his distance control, unique striking angles, and creativity'),
+carrot-# ('TJ Dillashaw', 'USA', 'North America', 'Southpaw', 'Right-handed', 'Bantamweight', 17, 5, 22, 77.27, 'Study his footwork, angles, stance switching, and cardio'),
+carrot-# ('Cory Sandhagen', 'USA', 'North America', 'Southpaw', 'Right-handed', 'Bantamweight', 16, 4, 20, 80.00, 'Study his creative striking, movement, and unpredictable attacks'),
+carrot-# ('Khabib Nurmagomedov', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Lightweight', 29, 0, 29, 100.00, 'Study his wrestling, ground control, pressure, and fight IQ'),
+carrot-# ('Islam Makhachev', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Lightweight', 25, 1, 26, 96.15, 'Study his wrestling, ground game, and transitions'),
+carrot-# ('Israel Adesanya', 'Nigeria', 'Africa', 'Southpaw', 'Right-handed', 'Middleweight', 24, 3, 27, 88.89, 'Study his calf kicks, feints, distance management, and counter striking'),
+carrot-# ('Francis Ngannou', 'Cameroon', 'Africa', 'Orthodox', 'Right-handed', 'Heavyweight', 17, 3, 20, 85.00, 'Study his one-shot KO power, footwork, and patience'),
+carrot-# ('Jon Jones', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Heavyweight', 27, 1, 28, 96.43, 'Study his creativity, fight IQ, distance control, and adaptability'),
+carrot-# ('Alexander Volkanovski', 'Australia', 'Oceania', 'Orthodox', 'Right-handed', 'Featherweight', 26, 3, 29, 89.66, 'Study his fight IQ, wrestling, adjustments, and cardio'),
+carrot-# ('Max Holloway', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Featherweight', 25, 7, 32, 78.13, 'Study his cardio, pace, volume striking, and jab'),
+carrot-# ('Ilia Topuria', 'Georgia', 'Europe', 'Orthodox', 'Right-handed', 'Featherweight', 15, 0, 15, 100.00, 'Study his boxing, pressure, and KO power'),
+carrot-# ('Charles Oliveira', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Lightweight', 34, 9, 43, 79.07, 'Study his submission game, creativity, and comeback ability'),
+carrot-# ('Justin Gaethje', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Lightweight', 25, 4, 29, 86.21, 'Study his leg kicks, pressure, and durability'),
+carrot-# ('Robert Whittaker', 'Australia', 'Oceania', 'Orthodox', 'Right-handed', 'Middleweight', 24, 6, 30, 80.00, 'Study his footwork, combinations, and fight IQ'),
+carrot-# ('Kamaru Usman', 'Nigeria', 'Africa', 'Orthodox', 'Right-handed', 'Welterweight', 20, 3, 23, 86.96, 'Study his wrestling, jab, cardio, and pressure'),
+carrot-# ('Leon Edwards', 'Jamaica', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 21, 3, 24, 87.50, 'Study his fight IQ, adjustments, and left high kick'),
+carrot-# ('Alex Pereira', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 10, 2, 12, 83.33, 'Study his left hook, striking power, and clinch'),
+carrot-# ('Jamahal Hill', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 12, 2, 14, 85.71, 'Study his boxing, range control, and KO power'),
+carrot-# ('Jiri Prochazka', 'Czech Rep.', 'Europe', 'Southpaw', 'Left-handed', 'Light Heavyweight', 29, 4, 33, 87.88, 'Study his unpredictability, finishing instinct, and creativity'),
+carrot-# ('Magomed Ankalaev', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Light Heavyweight', 18, 1, 19, 94.74, 'Study his wrestling, composure, and fight IQ'),
+carrot-# ('Petr Yan', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Bantamweight', 16, 4, 20, 80.00, 'Study his boxing, pressure, and cardio'),
+carrot-# ('Aljamain Sterling', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Bantamweight', 23, 4, 27, 85.19, 'Study his wrestling, submissions, and grappling'),
+carrot-# ('Henry Cejudo', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Bantamweight', 16, 2, 18, 88.89, 'Study his wrestling, fight IQ, and adjustments'),
+carrot-# ('Deiveson Figueiredo', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Flyweight', 22, 4, 26, 84.62, 'Study his KO power, aggression, and submissions'),
+carrot-# ('Brandon Moreno', 'Mexico', 'North America', 'Orthodox', 'Right-handed', 'Flyweight', 22, 6, 28, 78.57, 'Study his cardio, heart, and submission game'),
+carrot-# ('Alexandre Pantoja', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Flyweight', 26, 5, 31, 83.87, 'Study his grappling, aggression, and fight IQ'),
+carrot-# ('Yair Rodriguez', 'Mexico', 'North America', 'Southpaw', 'Right-handed', 'Featherweight', 15, 4, 19, 78.95, 'Study his creativity, kicking game, and unpredictability'),
+carrot-# ('Brian Ortega', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Featherweight', 15, 3, 18, 83.33, 'Study his submissions, durability, and comeback ability'),
+carrot-# ('Arnold Allen', 'UK', 'Europe', 'Orthodox', 'Right-handed', 'Featherweight', 19, 2, 21, 90.48, 'Study his boxing, cardio, and fight IQ'),
+carrot-# ('Movsar Evloev', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Featherweight', 17, 0, 17, 100.00, 'Study his wrestling, grappling, and control'),
+carrot-# ('Bryce Mitchell', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Featherweight', 16, 2, 18, 88.89, 'Study his wrestling, submissions, and creativity'),
+carrot-# ('Josh Emmett', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Featherweight', 18, 4, 22, 81.82, 'Study his KO power, pressure, and durability'),
+carrot-# ('Calvin Kattar', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Featherweight', 23, 7, 30, 76.67, 'Study his boxing, cardio, and durability'),
+carrot-# ('Dan Hooker', 'New Zealand', 'Oceania', 'Orthodox', 'Right-handed', 'Lightweight', 22, 12, 34, 64.71, 'Study his cardio, reach, and Muay Thai'),
+carrot-# ('Michael Chandler', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Lightweight', 23, 8, 31, 74.19, 'Study his explosiveness, wrestling, and power'),
+carrot-# ('Beneil Dariush', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Lightweight', 22, 5, 27, 81.48, 'Study his grappling, submissions, and fight IQ'),
+carrot-# ('Arman Tsarukyan', 'Armenia', 'Asia', 'Orthodox', 'Right-handed', 'Lightweight', 21, 3, 24, 87.50, 'Study his wrestling, cardio, and pressure'),
+carrot-# ('Mateusz Gamrot', 'Poland', 'Europe', 'Orthodox', 'Right-handed', 'Lightweight', 22, 2, 24, 91.67, 'Study his wrestling, grappling, and transitions'),
+carrot-# ('Rafael Fiziev', 'Kyrgyzstan', 'Asia', 'Orthodox', 'Right-handed', 'Lightweight', 12, 3, 15, 80.00, 'Study his Muay Thai, kicks, and pressure'),
+carrot-# ('Jalin Turner', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Lightweight', 13, 7, 20, 65.00, 'Study his reach, submissions, and creativity'),
+carrot-# ('Paddy Pimblett', 'UK', 'Europe', 'Orthodox', 'Right-handed', 'Lightweight', 20, 3, 23, 86.96, 'Study his submissions, showmanship, and grappling'),
+carrot-# ('Geoff Neal', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 15, 5, 20, 75.00, 'Study his boxing, power, and combinations'),
+carrot-# ('Belal Muhammad', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 23, 3, 26, 88.46, 'Study his cardio, wrestling, and pressure'),
+carrot-# ('Shavkat Rakhmonov', 'Kazakhstan', 'Asia', 'Orthodox', 'Right-handed', 'Welterweight', 17, 0, 17, 100.00, 'Study his finishing instinct, submissions, and striking'),
+carrot-# ('Gilbert Burns', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Welterweight', 20, 5, 25, 80.00, 'Study his grappling, submissions, and pressure'),
+carrot-# ('Stephen Thompson', 'USA', 'North America', 'Southpaw', 'Left-handed', 'Welterweight', 17, 6, 23, 73.91, 'Study his karate style, footwork, and distance management'),
+carrot-# ('Vicente Luque', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Welterweight', 21, 9, 30, 70.00, 'Study his aggression, submissions, and durability'),
+carrot-# ('Jorge Masvidal', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 35, 16, 51, 68.63, 'Study his boxing, fight IQ, and KO power'),
+carrot-# ('Nate Diaz', 'USA', 'North America', 'Southpaw', 'Left-handed', 'Welterweight', 21, 13, 34, 61.76, 'Study his cardio, durability, and boxing volume'),
+carrot-# ('Robbie Lawler', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 28, 15, 43, 65.12, 'Study his aggression, power, and durability'),
+carrot-# ('Tyron Woodley', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Welterweight', 19, 7, 26, 73.08, 'Study his wrestling, power, and counter striking'),
+carrot-# ('Khamzat Chimaev', 'Sweden', 'Europe', 'Orthodox', 'Right-handed', 'Welterweight', 13, 0, 13, 100.00, 'Study his pressure, wrestling, and finishing instinct'),
+carrot-# ('Tom Aspinall', 'UK', 'Europe', 'Orthodox', 'Right-handed', 'Heavyweight', 15, 3, 18, 83.33, 'Study his speed, submissions, and movement for heavyweight'),
+carrot-# ('Ciryl Gane', 'France', 'Europe', 'Orthodox', 'Right-handed', 'Heavyweight', 11, 2, 13, 84.62, 'Study his footwork, kickboxing, and distance management'),
+carrot-# ('Stipe Miocic', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Heavyweight', 20, 4, 24, 83.33, 'Study his boxing, wrestling, and fight IQ'),
+carrot-# ('Curtis Blaydes', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Heavyweight', 17, 4, 21, 80.95, 'Study his wrestling, pressure, and ground control'),
+carrot-# ('Derrick Lewis', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Heavyweight', 27, 10, 37, 72.97, 'Study his KO power, durability, and get-up ability'),
+carrot-# ('Tai Tuivasa', 'Australia', 'Oceania', 'Orthodox', 'Right-handed', 'Heavyweight', 15, 5, 20, 75.00, 'Study his aggression, power, and walkdown pressure'),
+carrot-# ('Sergei Pavlovich', 'Russia', 'Europe', 'Orthodox', 'Right-handed', 'Heavyweight', 17, 2, 19, 89.47, 'Study his pressure, power, and early finishes'),
+carrot-# ('Jan Blachowicz', 'Poland', 'Europe', 'Orthodox', 'Right-handed', 'Light Heavyweight', 28, 10, 38, 73.68, 'Study his Polish power, clinch, and fight IQ'),
+carrot-# ('Aleksandar Rakic', 'Austria', 'Europe', 'Orthodox', 'Right-handed', 'Light Heavyweight', 14, 3, 17, 82.35, 'Study his kicks, footwork, and distance management'),
+carrot-# ('Nikita Krylov', 'Ukraine', 'Europe', 'Orthodox', 'Right-handed', 'Light Heavyweight', 30, 10, 40, 75.00, 'Study his submissions, aggression, and creativity'),
+carrot-# ('Anthony Smith', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 36, 16, 52, 69.23, 'Study his submissions, durability, and fight IQ'),
+carrot-# ('Dominick Reyes', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 12, 4, 16, 75.00, 'Study his boxing, athleticism, and distance control'),
+carrot-# ('Johnny Walker', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 20, 8, 28, 71.43, 'Study his creativity, athleticism, and KO power'),
+carrot-# ('Ryan Spann', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 21, 8, 29, 72.41, 'Study his submissions, power, and finishing instinct'),
+carrot-# ('Khalil Rountree', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 12, 5, 17, 70.59, 'Study his Muay Thai, power, and pressure'),
+carrot-# ('Dustin Jacoby', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Light Heavyweight', 18, 7, 25, 72.00, 'Study his kickboxing, volume, and combinations'),
+carrot-# ('Jack Hermansson', 'Sweden', 'Europe', 'Orthodox', 'Right-handed', 'Middleweight', 22, 8, 30, 73.33, 'Study his grappling, submissions, and pressure'),
+carrot-# ('Paulo Costa', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Middleweight', 14, 2, 16, 87.50, 'Study his pressure, power, and body work'),
+carrot-# ('Marvin Vettori', 'Italy', 'Europe', 'Orthodox', 'Right-handed', 'Middleweight', 19, 6, 25, 76.00, 'Study his durability, pressure, and grappling'),
+carrot-# ('Jared Cannonier', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Middleweight', 17, 6, 23, 73.91, 'Study his power, striking, and durability'),
+carrot-# ('Sean Strickland', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Middleweight', 28, 5, 33, 84.85, 'Study his jab, pressure, and defensive style'),
+carrot-# ('Dricus Du Plessis', 'South Africa', 'Africa', 'Orthodox', 'Right-handed', 'Middleweight', 20, 2, 22, 90.91, 'Study his pressure, power, and durability'),
+carrot-# ('Andre Muniz', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Middleweight', 23, 5, 28, 82.14, 'Study his submissions, armbars, and grappling'),
+carrot-# ('Nassourdine Imavov', 'France', 'Europe', 'Southpaw', 'Right-handed', 'Middleweight', 13, 4, 17, 76.47, 'Study his boxing, distance management, and combinations'),
+carrot-# ('Roman Dolidze', 'Georgia', 'Europe', 'Orthodox', 'Right-handed', 'Middleweight', 12, 3, 15, 80.00, 'Study his grappling, submissions, and power'),
+carrot-# ('Brendan Allen', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Middleweight', 21, 5, 26, 80.77, 'Study his submissions, grappling, and fight IQ'),
+carrot-# ('Muhammad Mokaev', 'UK', 'Europe', 'Orthodox', 'Right-handed', 'Flyweight', 10, 0, 10, 100.00, 'Study his wrestling, grappling, and undefeated mentality'),
+carrot-# ('Matheus Nicolau', 'Brazil', 'South America', 'Orthodox', 'Right-handed', 'Flyweight', 19, 4, 23, 82.61, 'Study his boxing, combinations, and fight IQ'),
+carrot-# ('Brandon Royval', 'USA', 'North America', 'Orthodox', 'Right-handed', 'Flyweight', 15, 7, 22, 68.18, 'Study his creativity, submissions, and chaos'),
+carrot-# ('Kai Kara-France', 'New Zealand', 'Oceania', 'Orthodox', 'Right-handed', 'Flyweight', 24, 10, 34, 70.59, 'Study his boxing, power, and combinations');
+INSERT 0 84
+carrot=# SELECT COUNT(*) FROM fighters_male;
+ count 
+-------
+    84
+(1 row)
+
+carrot=# SELECT * FROM fighters_male LIMIT 5;
+ id |  fighter_name  | country |   continent   |  stance  |  handedness  | weight_class | wins | losses | total_fights | win_rate |                             learning_tip                             
+----+----------------+---------+---------------+----------+--------------+--------------+------+--------+--------------+----------+----------------------------------------------------------------------
+  1 | Conor McGregor | Ireland | Europe        | Southpaw | Right-handed | Lightweight  |   22 |      6 |           28 |    78.57 | Study his left cross, footwork, distance management, and mental game
+  2 | Dustin Poirier | USA     | North America | Southpaw | Right-handed | Lightweight  |   29 |      8 |           37 |    78.38 | Study his boxing combinations, body punching, and pressure fighting
+  3 | Sean O'Malley  | USA     | North America | Southpaw | Right-handed | Bantamweight |   17 |      1 |           18 |    94.44 | Study his distance control, unique striking angles, and creativity
+  4 | TJ Dillashaw   | USA     | North America | Southpaw | Right-handed | Bantamweight |   17 |      5 |           22 |    77.27 | Study his footwork, angles, stance switching, and cardio
+  5 | Cory Sandhagen | USA     | North America | Southpaw | Right-handed | Bantamweight |   16 |      4 |           20 |    80.00 | Study his creative striking, movement, and unpredictable attacks
+(5 rows)
+
+...skipping...
+ id |  fighter_name  | country |   continent   |  stance  |  handedness  | weight_class | wins | losses | total_fights | win_rate |                             learning_tip                             
+----+----------------+---------+---------------+----------+--------------+--------------+------+--------+--------------+----------+----------------------------------------------------------------------
+  1 | Conor McGregor | Ireland | Europe        | Southpaw | Right-handed | Lightweight  |   22 |      6 |           28 |    78.57 | Study his left cross, footwork, distance management, and mental game
+  2 | Dustin Poirier | USA     | North America | Southpaw | Right-handed | Lightweight  |   29 |      8 |           37 |    78.38 | Study his boxing combinations, body punching, and pressure fighting
+  3 | Sean O'Malley  | USA     | North America | Southpaw | Right-handed | Bantamweight |   17 |      1 |           18 |    94.44 | Study his distance control, unique striking angles, and creativity
+  4 | TJ Dillashaw   | USA     | North America | Southpaw | Right-handed | Bantamweight |   17 |      5 |           22 |    77.27 | Study his footwork, angles, stance switching, and cardio
+  5 | Cory Sandhagen | USA     | North America | Southpaw | Right-handed | Bantamweight |   16 |      4 |           20 |    80.00 | Study his creative striking, movement, and unpredictable attacks
+(5 rows)
+
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+zsh:1: bad pattern: match_fighters(
+carrot=#  VARCHAR,
+carrot-#     p_handedness VARCHAR,
+carrot-#     p_weight_class VARCHAR
+carrot-# )
+carrot-# RETURNS TABLE(
+carrot(#     fighter_name VARCHAR,
+carrot(#     similarity_score INTEGER,
+carrot(#     stance_match BOOLEAN,
+carrot(#     handedness_match BOOLEAN,
+carrot(#     weight_match BOOLEAN,
+carrot(#     win_rate DECIMAL,
+carrot(#     learning_tip TEXT
+carrot(# ) AS $$
+carrot$# BEGIN
+carrot$#     RETURN QUERY
+carrot$#     SELECT 
+carrot$#         f.fighter_name,
+carrot$#         (CASE WHEN f.stance = p_stance THEN 20 ELSE 0 END +
+carrot$#          CASE WHEN f.handedness = p_handedness THEN 20 ELSE 0 END +
+carrot$#          CASE WHEN f.weight_class = p_weight_class THEN 60 ELSE 0 END)::INTEGER,
+carrot$#         (f.stance = p_stance),
+carrot$#         (f.handedness = p_handedness),
+carrot$#         (f.weight_class = p_weight_class),
+carrot$#         f.win_rate,
+carrot$#         f.learning_tip
+carrot$#     FROM fighters_male f
+carrot$#     ORDER BY similarity_score DESC, win_rate DESC
+carrot$#     LIMIT 5;
+carrot$# END;
+carrot$# $$ LANGUAGE plpgsql;
+ERROR:  syntax error at or near "VARCHAR"
+LINE 1: VARCHAR,
+        ^
+carrot=# CREATE OR REPLACE FUNCTION match_fighters(
+carrot(#     p_stance VARCHAR,
+carrot(#     p_handedness VARCHAR,
+carrot(#     p_weight_class VARCHAR
+carrot(# )
+carrot-# RETURNS TABLE(
+carrot(#     fighter_name VARCHAR,
+carrot(#     similarity_score INTEGER,
+carrot(#     stance_match BOOLEAN,
+carrot(#     handedness_match BOOLEAN,
+carrot(#     weight_match BOOLEAN,
+carrot(#     win_rate DECIMAL,
+carrot(#     learning_tip TEXT
+carrot(# )
+carrot-# LANGUAGE plpgsql
+carrot-# AS $$
+carrot$# BEGIN
+carrot$#     RETURN QUERY
+carrot$#     SELECT 
+carrot$#         f.fighter_name,
+carrot$#         (CASE WHEN f.stance = p_stance THEN 20 ELSE 0 END +
+carrot$#          CASE WHEN f.handedness = p_handedness THEN 20 ELSE 0 END +
+carrot$#          CASE WHEN f.weight_class = p_weight_class THEN 60 ELSE 0 END)::INTEGER,
+carrot$#         (f.stance = p_stance),
+carrot$#         (f.handedness = p_handedness),
+carrot$#         (f.weight_class = p_weight_class),
+carrot$#         f.win_rate,
+carrot$#         f.learning_tip
+carrot$#     FROM fighters_male f
+carrot$#     ORDER BY similarity_score DESC, win_rate DESC
+carrot$#     LIMIT 5;
+carrot$# END;
+carrot$# $$;
+CREATE FUNCTION
+carrot=# \copy fighters_male TO 'C:/ufc_matchmaker_data.csv' DELIMITER ',' CSV HEADER;
+C:/ufc_matchmaker_data.csv: No such file or directory
+carrot=# COPY fighters TO '/tmp/ufc_matchmaker.csv' DELIMITER ',' CSV HEADER;
+ERROR:  relation "fighters" does not exist
+carrot=# COPY fighters_male TO 'C:/temp/ufc_matchmaker.csv' DELIMITER ',' CSV HEADER;
+ERROR:  relative path not allowed for COPY to file
+carrot=# COPY fighters_male TO '/tmp/ufc_matchmaker.csv' DELIMITER ',' CSV HEADER;
+COPY 84
+carrot=# 
